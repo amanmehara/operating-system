@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
 	if (argc != 2) {
 		printf("Insufficient Arguments \n");
 		printf("Other Arguments Required : \n");
-		printf("Directory Name \n"); \
-			exit(-1);
+		printf("Directory Name \n");
+		exit(-1);
 	}
 
 	if ((dname = opendir(argv[1])) == NULL) {
