@@ -4,12 +4,12 @@
 
 int main(int argc, char *argv[]) {
 	int fd, i;
-	char buf[100];
+	char buffer[100];
 
 	if (argc != 2) {
-		printf("Insufficient Arguments \n");
-		printf("Other Arguments Required : \n");
-		printf("File Name \n");
+		printf("Number of Arguements provided != 2 \n");
+		printf("Arguements Required: \n");
+		printf("Filename \n");
 		exit(-1);
 	}
 
@@ -23,12 +23,13 @@ int main(int argc, char *argv[]) {
 	printf("%s : \n", argv[1]);
 	printf("\n");
 
-	while (read(fd, buf, sizeof(buf)) > 0) {
-		printf("%s", buf);
+	while (read(fd, buffer, sizeof(buf)) > 0) {
+		printf("%s", buffer);
 	}
 
 	close(fd);
 
-	return 0;
+	printf("\n");
 
+	return 0;
 }

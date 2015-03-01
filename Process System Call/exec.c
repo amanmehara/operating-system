@@ -3,41 +3,39 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(int argc, char*argv[])
-{
+int main(int argc, char*argv[]) {
 	pid_t pid;
 	int i;
 
 	if (argc != 3) {
-		printf("Insufficient Argument \n");
-		printf("Other Argument Required : \n");
+		printf("Number of Arguements provided != 3 \n");
+		printf("Arguements Required: \n");
 		printf("Path \n");
 		printf("Command \n");
 		exit(-1);
 	}
 
-	switch (pid = fork())
-	{
+	switch (pid = fork()) {
 	case -1:
 		printf("Process Creation Error. \n");
 		exit(-1);
 
 	case 0:
 		printf("Child Starts :\n");
-		i = execl(argv[1], argv[2], 0);
-
-		if (i < 0)
-		{
+		
+		if (execl(argv[1], argv[2], 0) < 0) {
 			perror(argv[2]);
 			exit(-1);
 		}
 
-		printf("Child Terminated. \n");
+		break;
 
 	default:
 		wait(NULL);
 		printf("Child Terminated. \n");
 	}
+
+	printf("\n");
 
 	return 0;
 }

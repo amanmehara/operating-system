@@ -11,16 +11,18 @@ int main() {
 	
 	n = scandir(pathname, &namelist, 0, alphasort);
 	
-	if (n == 0) {
-		printf("Error. \n");
+	if (n < 0) {
+		perror("scandir");
 	}
 	else {
 		for (i = 0; i < n; i++) {
 			if (namelist[i]->d_name[0] != '.') {
-				printf("%-20s", namelist[i]->d_name);
+				printf("%s \n", namelist[i]->d_name);
 			}
 		}
 	}
+
+	printf("\n");
 
 	return 0;
 }

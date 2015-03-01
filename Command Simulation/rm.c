@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 	if (fd != -1) {
 		close(fd);
 		unlink(argv[1]);
-		printf("%s deleted!", argv[1]);
+		printf("%s deleted! \n", argv[1]);
 	}
 	else {
 		perror(argv[1]);

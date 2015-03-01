@@ -3,20 +3,18 @@
 #include <sys/stat.h> 
 #include <time.h>
 
-int main(int argc, char*argv[])
-{
+int main(int argc, char*argv[]) {
 	struct stat file;
 	int n;
 
 	if (argc != 2) {
-		printf("Insufficient Arguments \n");
-		printf("Other Arguments Required : \n");
+		printf("Number of Arguements provided != 2 \n");
+		printf("Arguements Required: \n");
 		printf("Filename \n");
 		exit(-1);
 	}
 
-	if ((n = stat(argv[1], &file)) == -1)
-	{
+	if ((n = stat(argv[1], &file)) == -1) {
 		perror(argv[1]);
 		exit(-1);
 	}
@@ -35,11 +33,12 @@ int main(int argc, char*argv[])
 	printf("File Size : %d Bytes \n", file.st_size);
 	printf("Number Of Links : %d \n", file.st_nlink);
 
-	printf("Permissions : \n");
 	printf("Directory : ");
 	printf((S_ISDIR(file.st_mode)) ? "d " : "- ");
 	printf("\n");
-
+	
+	printf("Permissions : \n");
+	
 	printf("User : ");
 	printf((file.st_mode & S_IRUSR) ? "r " : "- ");
 	printf((file.st_mode & S_IWUSR) ? "w " : "- ");
@@ -59,13 +58,12 @@ int main(int argc, char*argv[])
 	printf("\n");
 
 	if (file.st_mode & S_IFREG) {
-		printf("Type : Regular\n");
+		printf("Type : Regular \n");
 	}
 
 	if (file.st_mode & S_IFDIR) {
-		printf("Type : Directory\n");
+		printf("Type : Directory \n");
 	}
 
 	return 0;
-
 }
